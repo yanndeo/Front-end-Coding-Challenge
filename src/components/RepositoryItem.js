@@ -9,10 +9,9 @@ import { formatNumber } from '../utils/formatNumber';
  * Receive props from list 
  * and modelize a item
  */
-const RepositoryItem = ({repo}) => {
+const RepositoryItem = (props) => {
 
-    //let issues = parseFloat(repo.stargazers_count);
-
+    const { name, avatar_url, language, stargazers_count, has_issues, open_issues_count, html_url, description} = props.repo
 
     return (
         <div className="media col-sm-12 col-md-12 col-lg-12 p-4 border mb-3" >
@@ -21,7 +20,7 @@ const RepositoryItem = ({repo}) => {
 
                 <figure className="block-4-image">
 
-                    <img className="align-self-center mr-3 img-fluid" src={repo.owner.avatar_url} alt="" />
+                    <img className="align-self-center mr-3 img-fluid" src={avatar_url} alt="" />
 
                 </figure>
 
@@ -29,14 +28,14 @@ const RepositoryItem = ({repo}) => {
 
             <div className="media-body">
 
-                <a href={repo.html_url}> <span className=" text-primary h6 text-uppercase">{repo.name} </span></a>
+                <a href={html_url}> <span className=" text-primary h6 text-uppercase">{name} </span></a>
 
-                <p className="">{repo.description} | <b>Language:</b> "<i> {repo.language ? repo.language : 'none'  } </i> " </p>
+                <p className="">{description} | <b>Language:</b> "<i> {language ? language : 'none'  } </i> " </p>
 
                 <p>
-                    <a href="#!" className="btn btn-primary">Stars: {formatNumber(repo.stargazers_count)} </a> &nbsp; &nbsp;
+                    <a href="#!" className="btn btn-primary">Stars: {formatNumber(stargazers_count)} </a> &nbsp; &nbsp;
 
-                    <a href="#!" className="btn btn-primary "> Issues :{repo.has_issues ? repo.open_issues_count : 'none'} </a>
+                    <a href="#!" className="btn btn-primary "> Issues :{has_issues ? open_issues_count : 'none'} </a>
 
                     <span> &nbsp; Submitted 30 days ago by tensorflow . </span>
                 </p>
