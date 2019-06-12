@@ -2,7 +2,7 @@
 export const formatNumber = (num ) =>{
     
     let stars;
-    console.log(num)
+    //console.log(num)
 
     if (num.toString().length > 3) {
 
