@@ -5,7 +5,7 @@ const initialState = {
   repositoriesData: [],
   page: 1,
   totalPages: null,
-  incomplete_results: true
+  incomplete_results: true,
 };
 
 const per = 30;
@@ -27,7 +27,7 @@ const { type, payload } = action;
               loading: false,
               repositoriesData: [...state.repositoriesData, ...getJustThisData(payload.items) ],
               totalPages: Math.round(payload.total_count / per),
-              incomplete_results: payload.incomplete_results
+              incomplete_results: payload.incomplete_results,
             };
 
 
@@ -45,16 +45,16 @@ function getJustThisData(datas){
     return datas.map( data=>{
 
          return {
-             name: data.name,
-             language: data.language,
-             stargazers_count: data.stargazers_count,
-             has_issues: data.has_issues,
-             open_issues_count: data.open_issues_count,
-             avatar_url: data.owner.avatar_url,
-             html_url: data.html_url,
-             description: data.description,
+           name: data.name,
+           language: data.language,
+           stargazers_count: data.stargazers_count,
+           has_issues: data.has_issues,
+           open_issues_count: data.open_issues_count,
+           avatar_url: data.owner.avatar_url,
+           html_url: data.html_url,
+           description: data.description,
+           created_at: data.created_at
            //homepage: data.homepage
-
          };
      })
  }
